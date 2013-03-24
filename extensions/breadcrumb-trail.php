@@ -89,6 +89,7 @@ class Breadcrumb_Trail {
 			//'show_edit_link'  => false,
 			'show_title'      => true,
 			'echo'            => true,
+			'min_depth'		  => 0,
 
 			/* Post taxonomy (examples follow). */
 			'post_taxonomy' => array(
@@ -125,7 +126,7 @@ class Breadcrumb_Trail {
 		$breadcrumb = '';
 
 		/* Connect the breadcrumb trail if there are items in the trail. */
-		if ( !empty( $this->items ) && is_array( $this->items ) ) {
+		if ( !empty( $this->items ) && is_array( $this->items )  && count($this->items) > $this->args["min_depth"]) {
 
 			/* Open the breadcrumb trail containers. */
 			$breadcrumb = "\n\t\t" . '<' . tag_escape( $this->args['container'] ) . ' class="breadcrumb-trail breadcrumbs" itemprop="breadcrumb">';
